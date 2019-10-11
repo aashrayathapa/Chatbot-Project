@@ -8,7 +8,9 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-    if message.content == "!Hi":
+    if "!Hi" in message.content:
         await message.channel.send("Hello")
+    
+        
 
 client.run("NjMyMTMzMDA4MTc4MDIwMzUz.XaBAUQ.ySHJRsIiLUswtta8kXqRbZddXQ4")
