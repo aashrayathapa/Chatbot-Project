@@ -8,9 +8,9 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-    if message.content == "!Hi":
+    if "!HI" in message.content.upper():
         await message.channel.send("Hello")
-    elif "!Purge" in message.content:
+    elif "!PURGE" in message.content.upper():
         global numToDelete
         numToDelete = ""
         counter = 0
@@ -25,5 +25,9 @@ async def on_message(message):
                 await Client.delete_message(oldMessage)
                 counter = counter + 1
                 await syncio.sleep(1.2)
+    elif "!DELETE" in message.content.upper():
+        tmp = await message.channel.send("Clearing...")
+        async for msg in client.logs_from(message.channel):
+            await client.delete_message(msg)
 
 client.run("NjMyMTMzMDA4MTc4MDIwMzUz.XaBAUQ.ySHJRsIiLUswtta8kXqRbZddXQ4")
