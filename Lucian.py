@@ -1,3 +1,4 @@
+$ pip install -U discord.py
 import discord
 
 client = discord.Client()
