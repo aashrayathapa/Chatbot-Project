@@ -19,9 +19,9 @@ async def on_ready():
 async def on_message(message):
     if "!HI" in message.content.upper():
         await message.channel.send("Hello")
-    elif "FIND" in message.content.upper() and "TEAM" in message.content.upper():
+    elif "FIND" in message.content.upper() and "TEAM" in message.content.upper(): #not completed yet
         for letter in message.content:
-            print(letter)
+            print(letter) #testing the loop
         teamToSearch = message.content
         teams = f.search_teams()
         print(teams)
