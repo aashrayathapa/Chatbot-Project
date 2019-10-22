@@ -1,26 +1,42 @@
-import discord
+#before we can use vader we must install it on the the host PC
+#pip install vaderSentiment
 
+import discord
+from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+from googletrans import Translator
+
+# create discord client, sentiment analyzer and google translater object
 client = discord.Client()
+analyzer = SentimentIntensityAnalyzer()
+translator = Translator()
 
 @client.event
 async def on_ready():
     print("We have logged in")
 
+def sentiment_analyzer_scores(text):
+    trans = translator.translate(text).text
+
+    score = analyzer.polarity_scores(trans)
+    lb = score['compound']
+    if lb >= 0.05:
+        return 'positive'
+    elif (lb > -0.05) and (lb < 0.05):
+        return 'neutral'
+    else:
+        return 'negative'
+
+@client.event
+async def on_ready():
+    print('We have logged in as {0.user}'.format(client))
+
 @client.event
 async def on_message(message):
-    if message.content == "!Hi":
-        await message.channel.send("Hello")
-        await message.channel.send("How are you feeling? \n{pick a number} \n1.tired,\n2. sad,\n3. apathetic,\n4. angry,\n5. happy ")
-    elif message.content == "1":
-        await message.channel.send("Quote relating to being tired.")
-    elif message.content == "2":
-        await message.channel.send("Quote relating sadness.")
-    elif message.content == "3":
-        await message.channel.send("Quote relating to apathy.")
-    elif message.content == "4":
-        await message.channel.send("Quote relating to anger.")
-    elif message.content == "5":
-        await message.channel.send("Quote relating to happiness.")
-        
+    if message.author == client.user:
+        return
+    
+    sentiment = sentiment_analyzer_scores(message.content)
+    print('sentiment: ' + str(sentiment))
+    await message.channel.send('The sentiment of your text is ' + str(sentiment))        
 
 client.run("NjMyMTMzMDA4MTc4MDIwMzUz.XaBAUQ.ySHJRsIiLUswtta8kXqRbZddXQ4")
