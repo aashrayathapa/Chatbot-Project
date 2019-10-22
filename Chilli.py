@@ -37,6 +37,11 @@ async def on_message(message):
     
     sentiment = sentiment_analyzer_scores(message.content)
     print('sentiment: ' + str(sentiment))
-    await message.channel.send('The sentiment of your text is ' + str(sentiment))        
+    await message.channel.send('The sentiment of your text is ' + str(sentiment))
+    if sentiment == 'negative':
+        await mesage.channel.send('The bot responds with a mean statement.')
+    else:
+        await message.channel.send('The bot responds with a nice statement.')
+        
 
 client.run("NjMyMTMzMDA4MTc4MDIwMzUz.XaBAUQ.ySHJRsIiLUswtta8kXqRbZddXQ4")
