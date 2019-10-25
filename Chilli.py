@@ -44,4 +44,4 @@ async def on_message(message):
         await message.channel.send('The bot responds with a nice statement.')
         
 
-client.run("NjMyMTMzMDA4MTc4MDIwMzUz.XaBAUQ.ySHJRsIiLUswtta8kXqRbZddXQ4")
+client.run("bot token")
