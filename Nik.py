@@ -26,4 +26,4 @@ async def on_message(message):
         teams = f.search_teams()
         print(teams)
 
-client.run("NjMyMTMzMDA4MTc4MDIwMzUz.XaSOeg.vmXqdHfduVBSW_voDMYCUjgUMmo")
+client.run("Filler")
