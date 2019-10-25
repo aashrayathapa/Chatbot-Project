@@ -38,7 +38,7 @@ async def on_message_Quiz(message):
 @client.event
 async def on_message_MatchFacts(message):
   FavTeam = GetFavTeam(username)
-  await message.channel.send("Definitely not VAR's finest performance, you want the latest match scores and highlights for " + FavTeam?)
+  await message.channel.send("Definitely not VAR's finest performance, you want the latest match scores and highlights for " + FavTeam + "?")
   if sentiment == 'negative':
     await mesage.channel.send('The bot responds with a mean statement.')
     await message.channel.send('Do you want the stats yes or no?')
