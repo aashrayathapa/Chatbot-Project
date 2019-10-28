@@ -77,5 +77,66 @@ def main():
 if __name__ == '__main__':
     main()
 #introduce values into the database
+import sqlite3
+from sqlite3 import Error
+ 
+ 
+def create_connection(db_file):
+    """ create a database connection to the SQLite database
+        specified by db_file
+    :param db_file: database file
+    :return: Connection object or None
+    """
+    conn = None
+    try:
+        conn = sqlite3.connect(db_file)
+    except Error as e:
+        print(e)
+ 
+    return conn
+def create_censored(conn, censored):
+    """
+    Create a new user into the censored table
+    :param conn:
+    :param censored:
+    :return: censored id
+    """
+    sql = ''' INSERT INTO censored(username,password,email)
+              VALUES(?,?,?) '''
+    cur = conn.cursor()
+    cur.execute(sql, censored)
+    return cur.lastrowid
+ 
+ 
+def create_uncensored(conn, uncensored):
+    """
+    Create a new user into the uncensored table
+    :param conn:
+    :param uncensored:
+    :return: uncensored id
+    """
+ 
+    sql = ''' INSERT INTO uncensored(username,password,email)
+              VALUES(?,?,?) '''
+    cur = conn.cursor()
+    cur.execute(sql, uncensored)
+    return cur.lastrowid 
+def main():
+    database = r"C:\sqlite\db\barry.db"
+ 
+    # create a database connection
+    conn = create_connection(database)
+    with conn:
+        # create a censored account
+        censored = ('Lucjan', 'abc', 'morarul');
+        censored_id = create_censored(conn, censored)
+        # create a uncensored account
+        uncensored = ('Stephan', 'idk', 'stefanb');
+        uncensored_id = create_uncensored(conn, uncensored)
+
+ 
+ 
+if __name__ == '__main__':
+    main()
 
 
