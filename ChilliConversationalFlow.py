@@ -1,5 +1,5 @@
 import discord
-
+import random
 client = discord.Client()
 
 @client.event
@@ -27,7 +27,7 @@ async def on_message_Hi(message):
         await message.channel.send('The bot responds with a nice statement.')
 
 @client.event
-async def on_message_Quiz(message):
+async def on_message_Quiz(message, username):
   await message.channel.send('U ready for a lil football trivia?')
   if sentiment == 'negative':
     await mesage.channel.send('The bot responds with a mean statement.')
@@ -36,7 +36,7 @@ async def on_message_Quiz(message):
     FootballQuiz(username)
  
 @client.event
-async def on_message_MatchFacts(message):
+async def on_message_MatchFacts(message, username):
   FavTeam = GetFavTeam(username)
   await message.channel.send("Definitely not VAR's finest performance, you want the latest match scores and highlights for " + FavTeam + "?")
   if sentiment == 'negative':
@@ -47,3 +47,18 @@ async def on_message_MatchFacts(message):
   else:
     await message.channel.send('The bot responds with a nice statement.')
     GetMatchfacts(FavTeam)
+
+@client.event
+async def on_message_responses(sentiment, username):
+    accountType = GetAccountType(username)
+    if sentiment == 'negative' and accountType == 'uncensored':
+        random.choice(UncenNegWB)
+    elif sentiment == 'postive' and accountType == 'uncensored':
+        random.choice(UncenPosWB)
+    elif sentiment == 'postive' and accountType == 'censored':
+        random.choice(CenPosWB)
+    elif sentiment == 'negtive' and accountType == 'censored':
+        random.choice(CenNegWB)
+        
+        
+        
