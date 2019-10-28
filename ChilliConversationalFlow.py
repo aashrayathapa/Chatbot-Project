@@ -75,6 +75,7 @@ async def GetMatchfacts(FavTeam):
 
 @client.event
 async def on_message_swearing(message):
+    print
 
     
         
