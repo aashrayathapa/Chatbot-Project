@@ -50,9 +50,9 @@ def quiz():
    print("c) Muggsy Bogues.")
    e=input("Enter a, b or c: ")
    if e=='c':
-      print('That's correct! \nThe 5'3" (1.6 m) Muggsy Bogues actually went on to have a solid NBA career, the highlight of which arguably was his appearance in the 1996 film "Space Jam" alongside Michael Jordan. ')
+      print("That's correct! \nThe1.6 m Muggsy Bogues actually went on to have a solid NBA career, the highlight of which arguably was his appearance in the 1996 film "Space Jam" alongside Michael Jordan. ")
       correct(points)
   else:
-    print('That's wrong! \nThe 5'3" (1.6 m) Muggsy Bogues actually went on to have a solid NBA career, the highlight of which arguably was his appearance in the 1996 film "Space Jam" alongside Michael Jordan.')
+    print("That's wrong! \nThe 1.6 m Muggsy Bogues actually went on to have a solid NBA career, the highlight of which arguably was his appearance in the 1996 film "Space Jam" alongside Michael Jordan.")
   print("You finished the Trivia! Congratulations!")
   display()
