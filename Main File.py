@@ -112,5 +112,5 @@ async def on_message(message):
     else:
         pass
 
-client.run("NjMyMTMzMDA4MTc4MDIwMzUz.XbcP_g.oj7ndwK7u7m7LW0BgKI8QkZtLkE")
+client.run("NjMyMTMzMDA4MTc4MDIwMzUz.XcA-fw.VUg1TvaJKb2djAZ6hMwQy4I_9aE")
 print(data.get_available.competitions())
