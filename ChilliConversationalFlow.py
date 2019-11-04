@@ -48,17 +48,16 @@ def sentiment_analyzer_scores(text):
 async def on_message(message):
     username = get_username(message)
     intro = False
-    if intro == False:
+    while intro==False:
         if "HI" in message.content.upper():
             intro = True
             MSG = on_message_Hi(intro)
             await message.channel.send(MSG)
-    elif intro == True:
-        text = Rant()
-        await message.channel.send(text)
-        if "TRIVIA" in message.content.upper():
-            await message.channel.send('U ready for a lil basketball trivia?')
-            on_message_trivia(message, username)
+     text = Rant()
+     await message.channel.send(text)
+     if "TRIVIA" in message.content.upper():
+        await message.channel.send('U ready for a lil basketball trivia?')
+        on_message_trivia(message, username)
     if message.author == client.user:
         return
     sentiment = sentiment_analyzer_scores(message.content)
