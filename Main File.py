@@ -1,10 +1,8 @@
 import discord
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 from googletrans import Translator
-#import http.client
-#import json
-#from football_data_api import data_fetchers
-from sportsreference.nba.teams import Teams
+from sportsreference.nba.teams import *
+from datetime import datetime
 
 client = discord.Client()
 
@@ -12,15 +10,9 @@ analyzer = SentimentIntensityAnalyzer()
 
 translator = Translator()
 
-#FOOTBALL_DATA_API = "49514fb34530408e95aba7f3b49733ad"
-#PYFOOTBALL_API_KEY = "49514fb34530408e95aba7f3b49733ad"
-#connection = http.client.HTTPConnection("api.football-data.org")
-#headers = { "X-Auth-Token": "49514fb34530408e95aba7f3b49733ad" }
-#connection.request("GET", "/v2/competitions/", None, headers )
-#response = json.loads(connection.getresponse().read().decode())
-#f = pyfootball.Football(PYFOOTBALL_API_KEY)
-#print(response)
-#data = data_fetchers.CompetitionData(FOOTBALL_DATA_API)
+#def printAllTeams():
+#    for team in Teams():
+#        await message.channel.send(team.name)
 
 def get_height_in_inches(height):
     feet, inches = height.split("-")
@@ -43,6 +35,15 @@ def sentiment_analyzer_scores(text):
     else:
         return 'negative'
 
+def get_birthday(player):
+    bday = player.birth_date
+    print(str(bday))
+    return bday
+
+def split_string(string):
+    splitString = string.split()
+    return splitString
+
 @client.event
 async def on_ready():
     print("We have logged in")
@@ -51,41 +52,65 @@ async def on_ready():
 async def on_message(message):
     if message.author == client.user:
         return
-    if "FIND" in message.content.upper() and "TALLEST" in message.content.upper():
-        if "TEAM" in message.content.upper():
-            for team in Teams():
-                #string = "The tallest player of", team.name, "is \t"
-                #await message.channel.send(string)
-                team_heights = {}
-                for player in team.roster.players:
-                    height = get_height_in_inches(player.height)
-                    team_heights[player.name] = height
-                string = print_tallest_player(team_heights, team)
-                await message.channel.send(string)
 
-    if "FIND" in message.content.upper() and "TEAM" in message.content.upper():
+    if "TEAM" in message.content.upper():
+        if "PLAYER" in message.content.upper():
+             if "HEIGHT" in message.content.upper():
+                for team in Teams():
+                    team_heights = {}
+                    for player in team.roster.players:
+                        height = get_height_in_inches(player.height)
+                        team_heights[player.name] = height
+                    string = print_tallest_player(team_heights, team)
+                    await message.channel.send(string)
+        elif "ALL" in message.content.upper() or "EVERY" in message.content.upper():
+            #printAllTeams()
+            stringOfTeams = ""
+            count = 0
+            for team in Teams():
+                if count == 0:
+                    stringOfTeams = stringOfTeams + team.name
+                    count = count + 1
+                else:
+                    stringOfTeams = stringOfTeams + ", " + team.name
+            await message.channel.send(stringOfTeams)
+    elif "ABBREVIATION" in message.content.upper():
         pass
-        #not completed yet
-        listOfWords = sentenceSplit(message.content)
+    elif "BORN" in message.content.upper() or "BIRTHDAY" in message.content.upper():
+        print("Full string:", message.content)
+        print("Split string:", split_string(message.content))
+        print("==========")
+        for team in Teams():
+            playerNames = []
+            for player in team.roster.players:
+                playerNames.append(player.name)
+                print(playerNames)
+                
+    elif "ASSISTS" in message.content.upper():
+        print("Checking assists")
+        listOfWords = split_string(message.content)
+        print("Full:", message.content)
+        print("Sliced:", str(listOfWords))
         for word in listOfWords:
-            wordBeingSearched = f.get_team(66)
-            if wordBeingSearched == None:
-                continue
-            else:
-                print(wordBeingSearched)
-                await message.channel.send("I have found your team.")
-    
+            for team in Teams():
+                if word.upper() in team.name.upper():
+                    #print(str(team.name), "have", str(team.assists), "assists")
+                    findTeam = True
+                    chosenTeam = team
+                    break
+        if findTeam == False:
+            await message.channel.send("We could not find that team")
+        else:
+            string = str(chosenTeam.name), "have", str(chosenTeam.assists), "assists"
+            await message.channel.send(string)
+            
     sentiment = sentiment_analyzer_scores(message.content)
-    print('sentiment: ' + str(sentiment))
+    #print('sentiment: ' + str(sentiment))
     await message.channel.send('The sentiment of your text is ' + str(sentiment))
     if sentiment == 'negative':
-        await message.channel.send('The bot responds with a mean statement.')
+        pass
     else:
-        await message.channel.send('The bot responds with a nice statement.')
+        pass
 
-def sentenceSplit(string): #converts a string into a list of words
-    listOfWords = string.split()
-    return listOfWords
-
-client.run("NjMyMTMzMDA4MTc4MDIwMzUz.XbLC3A._IRXZh9SKfRkESGTqKTVHaYUe7A")
+client.run("NjMyMTMzMDA4MTc4MDIwMzUz.XbcP_g.oj7ndwK7u7m7LW0BgKI8QkZtLkE")
 print(data.get_available.competitions())
