@@ -1,4 +1,6 @@
 #This will do all the backend
+#https://chatbotslife.com/how-to-create-an-intelligent-chatbot-in-python-c655eb39d6b1
+#https://www.reddit.com/r/discordapp/comments/8yfe5f/discordjs_bot_get_username_and_tag/
 from chatterbot import ChatBot
 from chatterbot.trainers import ListTrainer
 
