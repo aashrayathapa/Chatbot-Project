@@ -1,4 +1,10 @@
 #This file has been copyrighted, plagarism and missuse will not be torelated.
+import discord
+import random
+from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+from googletrans import Translator
+from sportsreference.nba.teams import Teams
+#from Trivia import quiz
 #from Trivia import quiz
 import random
 
