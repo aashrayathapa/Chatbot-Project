@@ -8,8 +8,8 @@ def display(points):
 def quiz():
     list = []
     points = 0
-    while len(list) < 5: 
-        question = random.randint(1, 5)   #generate random questions for each case
+    while len(list) < 10: 
+        question = random.randint(1, 10)   #generate random questions for each case
         if question not in list:
             list.append(question)
             if question == 1:
@@ -54,6 +54,46 @@ def quiz():
                     points=points+10
                 else:
                     print("That's wrong! \nThe 1.6 m Muggsy Bogues actually went on to have a solid NBA career, the highlight of which arguably was his appearance in the 1996 film Space Jam alongside Michael Jordan.")
+            elif question ==6 :
+                q6()
+                ans = input("Enter a, b or c: ")
+                if ans == 'a':
+                    print("That's correct! \nThe premier league started in the year 1992, when the name was changed. ")
+                    points=points+10
+                else:
+                    print("That's correct! \nThe premier league started in the year 1992, when the name was changed. ")
+           elif question == 7:
+                q7()
+                ans = input("Enter a, b or c: ")
+                if ans == 'c':
+                    print("That's correct! \nPremier league has been renamed four times in 20 years. ")
+                    points=points+10
+                else:
+                    print("That's wrong! \nPremier league has been renamed four times in 20 years.")
+          elif question == 8:
+                q8()
+                ans = input("Enter a, b or c: ")
+                if ans == 'b':
+                    print("That's correct! \nWayne rooney was only 16 years old when he broke into the everton team and scored his first premier League goal against arsenal. ")
+                    points=points+10
+                else:
+                    print("That's wrong! \nWayne rooney was only 16 years old when he broke into the everton team and scored his first premier League goal against arsenal. ")          
+           elif question == 9:
+                q9()
+                ans = input("Enter a, b or c: ")
+                if ans == 'c':
+                    print("That's correct! \nThe scottish manager ian porterfield was the first premier league manager to be sacked by chelsea fc in the year 1993 after 12 games without a win . ")
+                    points=points+10
+                else:
+                    print("That's wrong! \nThe scottish manager ian porterfield was the first premier league manager to be sacked by chelsea fc in the year 1993 after 12 games without a win.")         
+           elif question == 10:
+                q10()
+                ans = input("Enter a, b or c: ")
+                if ans == 'a':
+                    print("That's correct! \nThe first premier League goal was scored by brian deane of sheffield united in a 2–1 win against manchester united. ")
+                    points=points+10
+                else:
+                    print("That's wrong! \nThe first premier League goal was scored by brian deane of sheffield united in a 2–1 win against manchester united.")                                                                                                            
         else:
             continue
 
@@ -92,4 +132,35 @@ def q5():
    print("b) Spud Webb. ")
    print("c) Muggsy Bogues.")
 
+
+def q6():
+   print("What year did the premier league start?")
+   print("a) 1992. ")
+   print("b) 1899. ")
+   print("c) 2000.") 
+
+def q7():
+   print("How many times has the premier league been renamed?")
+   print("a) Three. ")
+   print("b)Two. ")
+   print("c) Four.") 
+    
+    
+def q8():
+   print("Against what team did wayne rooney score his first premier league goal?")
+   print("a) Aston villa. ")
+   print("b) Arsenal. ")
+   print("c) Everton.")    
+    
+def q9():
+   print("Who was the first premier league manager to be sacked?")
+   print("a) Steve bruce. ")
+   print("b) Alex ferguson. ")
+   print("c) Ian porterfield.")    
+
+def q10():
+   print("Who scored the first ever premier league goal?")
+   print("a) Brian deane. ")
+   print("b) Ryan giggs. ")
+   print("c) Mark hughes.")    
 
