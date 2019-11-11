@@ -58,42 +58,42 @@ def quiz():
                 q6()
                 ans = input("Enter a, b or c: ")
                 if ans == 'a':
-                    print("That's correct! \nThe premier league started in the year 1992, when the name was changed. ")
+                    print("That's correct! \nThe los angeles lakers won 33 straight games in the 1971-72 season, the most in NBA history. ")
                     points=points+10
                 else:
-                    print("That's correct! \nThe premier league started in the year 1992, when the name was changed. ")
-           elif question == 7:
+                    print("That's correct! \nThe los angeles lakers won 33 straight games in the 1971-72 season, the most in NBA history. ")
+            elif question == 7:
                 q7()
                 ans = input("Enter a, b or c: ")
                 if ans == 'c':
-                    print("That's correct! \nPremier league has been renamed four times in 20 years. ")
+                    print("That's correct! \nAt 23 years and 59 days, LeBron James became the youngest player to score 10,000 points in the NBA. ")
                     points=points+10
                 else:
-                    print("That's wrong! \nPremier league has been renamed four times in 20 years.")
-          elif question == 8:
+                    print("That's wrong! \nAt 23 years and 59 days, LeBron James became the youngest player to score 10,000 points in the NBA.")
+            elif question == 8:
                 q8()
                 ans = input("Enter a, b or c: ")
                 if ans == 'b':
-                    print("That's correct! \nWayne rooney was only 16 years old when he broke into the everton team and scored his first premier League goal against arsenal. ")
+                    print("That's correct! \nThe New York Knicks defeated the Toronto Huskies 68-66 in the very first NBA game on November 1, 1946. ")
                     points=points+10
                 else:
-                    print("That's wrong! \nWayne rooney was only 16 years old when he broke into the everton team and scored his first premier League goal against arsenal. ")          
-           elif question == 9:
+                    print("That's wrong! \nThe New York Knicks defeated the Toronto Huskies 68-66 in the very first NBA game on November 1, 1946. ")          
+            elif question == 9:
                 q9()
                 ans = input("Enter a, b or c: ")
                 if ans == 'c':
-                    print("That's correct! \nThe scottish manager ian porterfield was the first premier league manager to be sacked by chelsea fc in the year 1993 after 12 games without a win . ")
+                    print("That's correct! \nDuring his eighth grade year, Frank Vogel was featured during the Stupid Human Tricks segment of Late Night with David Letterman, in which he spun a basketball on a toothbrush while brushing his teeth. ")
                     points=points+10
                 else:
-                    print("That's wrong! \nThe scottish manager ian porterfield was the first premier league manager to be sacked by chelsea fc in the year 1993 after 12 games without a win.")         
-           elif question == 10:
+                    print("That's wrong! \nDuring his eighth grade year, Frank Vogel was featured during the Stupid Human Tricks segment of Late Night with David Letterman, in which he spun a basketball on a toothbrush while brushing his teeth.")         
+            elif question == 10:
                 q10()
                 ans = input("Enter a, b or c: ")
                 if ans == 'a':
-                    print("That's correct! \nThe first premier League goal was scored by brian deane of sheffield united in a 2–1 win against manchester united. ")
+                    print("That's correct! \nChamberlain never fouled out of a regular season or playoff game in his 14-year NBA career. ")
                     points=points+10
                 else:
-                    print("That's wrong! \nThe first premier League goal was scored by brian deane of sheffield united in a 2–1 win against manchester united.")                                                                                                            
+                    print("That's wrong! \nChamberlain never fouled out of a regular season or playoff game in his 14-year NBA career.")                                                                                                               
         else:
             continue
 
@@ -134,33 +134,32 @@ def q5():
 
 
 def q6():
-   print("What year did the premier league start?")
-   print("a) 1992. ")
-   print("b) 1899. ")
-   print("c) 2000.") 
+   print("What team owns the longest winning streak in NBA history?")
+   print("a) Los angeles lakers. ")
+   print("b) Miami heat. ")
+   print("c) Chicago bulls.") 
 
 def q7():
-   print("How many times has the premier league been renamed?")
-   print("a) Three. ")
-   print("b)Two. ")
-   print("c) Four.") 
+   print("Who was the youngest player to score 10,000 points in the NBA?")
+   print("a) Wilt chamberlain. ")
+   print("b)Micheal jordan. ")
+   print("c) LeBorn james.") 
     
     
 def q8():
-   print("Against what team did wayne rooney score his first premier league goal?")
-   print("a) Aston villa. ")
-   print("b) Arsenal. ")
-   print("c) Everton.")    
+   print("What team won the very first NBA game?")
+   print("a) Chicago stags. ")
+   print("b) New york knicks. ")
+   print("c) Toronto huskies.")    
     
 def q9():
-   print("Who was the first premier league manager to be sacked?")
-   print("a) Steve bruce. ")
-   print("b) Alex ferguson. ")
-   print("c) Ian porterfield.")    
+   print("Which NBA coach appeared on Late Night with David Letterman as an eighth grader?")
+   print("a) Ian porterfield. ")
+   print("b) Mark jackson. ")
+   print("c) Frank vogel.")    
 
 def q10():
-   print("Who scored the first ever premier league goal?")
-   print("a) Brian deane. ")
-   print("b) Ryan giggs. ")
-   print("c) Mark hughes.")    
-
+   print("How many games did Wilt Chamberlain foul out of during his 14 year NBA career?")
+   print("a) Zero. ")
+   print("b) Twelve. ")
+   print("c) Twenty five.")
