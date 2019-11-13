@@ -16,6 +16,7 @@ translator = Translator()
 @client.event
 async def on_ready():
     print('We have logged in as {0.user}'.format(client)) # this code will display the username of the bot as appeared in discord
+    await message.channel.send("say '!HI' to start the conversation")
 
 #the following code was amended and adapted from www.reddit.com/r/discordapp/comments/8yfe5f/discordjs_bot_get_username_and_tag/
 #the following code was commented out as it was no longer necessary
@@ -53,7 +54,7 @@ async def on_message(message):
         return
     
     accountType = 'cen' #the following code was my own creation
-    if "HI" in message.content.upper():
+    if "!HI" in message.content.upper():
         MSG = on_message_Hi()
         await message.channel.send(MSG)
     
