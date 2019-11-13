@@ -1,6 +1,6 @@
-#This will do all the backend
-#https://chatbotslife.com/how-to-create-an-intelligent-chatbot-in-python-c655eb39d6b1
-#https://www.reddit.com/r/discordapp/comments/8yfe5f/discordjs_bot_get_username_and_tag/
+# This code was not used
+# The following code was amended and adapted from chatbotslife.com/how-to-create-an-intelligent-chatbot-in-python-c655eb39d6b1
+# https://www.reddit.com/r/discordapp/comments/8yfe5f/discordjs_bot_get_username_and_tag/
 from chatterbot import ChatBot
 from chatterbot.trainers import ListTrainer
 
@@ -24,9 +24,10 @@ small_talk = ['hi there!',
               'not so good',
               'sorry to hear that.',
               "what's your name?",
-              "i am Stephen B. Smith, ask me anything...about basketball ... please.",
+              "i am Stephen B. Smith, ask me anything...about basketball ... please.",    # I added the last two lists to this list
               "Howdy and welcome to the Stephen B. Smith Show"]
 
+# The following 6 lines of code are my own creation
 BBall_Rant = []
 BBall_Facts = []
 UncenNegWB  = ["Oooooh, that shit is blasphemous", "Shiiieeeeet, I've been covering the NBA for 25 years. I've NEVER been more insulted", "Who does this bitch and yes i said BITCH think they are!"]
