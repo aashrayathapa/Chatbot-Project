@@ -1,39 +1,39 @@
 #This file has been copyrighted, plagarism and missuse will not be torelated.
+#This is where the code starts that has been amended and adapted from https://realpython.com/how-to-make-a-discord-bot-python/
 import discord
-import random
-from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+import random #This is my own code
+from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer # this is where the code starts that was amended and adapted from www-geeksforgeeks-org.cdn.ampproject.org/v/s/www.geeksforgeeks.org/python-sentiment-analysis-using-vader/amp
 from googletrans import Translator
-from sportsreference.nba.teams import Teams
+#from sportsreference.nba.teams import Teams
 #from Trivia import quiz
 #from Trivia import quiz
-import random
 
 client = discord.Client()
 analyzer = SentimentIntensityAnalyzer()
 translator = Translator()
 
-#@client.event
-#async def on_ready():
-#    print("We have logged in") 
 
 @client.event
 async def on_ready():
-    print('We have logged in as {0.user}'.format(client))
+    print('We have logged in as {0.user}'.format(client)) # this code will display the username of the bot as appeared in discord
 
+#the following code was amended and adapted from www.reddit.com/r/discordapp/comments/8yfe5f/discordjs_bot_get_username_and_tag/
+#the following code was commented out as it was no longer necessary
+#def get_username(message):
+#    username = ""
+#    if message.author == client.user:
+#        return
+#    else:
+#        user = str(message.author)
+#    if "!" in user:
+#        username = user[1:]
+#        return username
+#    else:
+#        return username
 
-def get_username(message):
-    username = ""
-    if message.author == client.user:
-        return
-    else:
-        user = str(message.author)
-    if "!" in user:
-        username = user[1:]
-        return username
-    else:
-        return username
+#THis is where the code amended and adapted from www.reddit.com/r/discordapp/comments/8yfe5f/discordjs_bot_get_username_and_tag/ ends
         
-
+#the following code was taken from https://www-geeksforgeeks-org.cdn.ampproject.org/v/s/www.geeksforgeeks.org/python-sentiment-analysis-using-vader/amp
 def sentiment_analyzer_scores(text):
     trans = translator.translate(text).text
 
@@ -45,39 +45,38 @@ def sentiment_analyzer_scores(text):
         return 'neutral'
     else:
         return 'negative'
+#this is where the code taken from https://www-geeksforgeeks-org.cdn.ampproject.org/v/s/www.geeksforgeeks.org/python-sentiment-analysis-using-vader/amp ends
 
 @client.event
 async def on_message(message):
-    if message.author == client.user:
+    if message.author == client.user: # this if statement was taken from https://www-geeksforgeeks-org.cdn.ampproject.org/v/s/www.geeksforgeeks.org/python-sentiment-analysis-using-vader/amp
         return
     
-    accountType = 'cen'
-    online = True
-    username = get_username(message)
-    #while intro==False:
+    accountType = 'cen' #the following code was my own creation
     if "HI" in message.content.upper():
-        intro = True
-        MSG = on_message_Hi(intro)
+        MSG = on_message_Hi()
         await message.channel.send(MSG)
     
     if "TRIVIA" in message.content.upper():
         await message.channel.send('U ready for a lil basketball trivia?')
-        on_message_trivia(message, username)
+        on_message_trivia(message)
     
     if message.author == client.user:
         return
+    #this is where my own code ends
     
+    #the following code has been amended and adapted from https://www-geeksforgeeks-org.cdn.ampproject.org/v/s/www.geeksforgeeks.org/python-sentiment-analysis-using-vader/amp
     sentiment = sentiment_analyzer_scores(message.content)
     await message.channel.send('The sentiment of your text is ' + str(sentiment))
     if sentiment == 'negative':
         await message.channel.send('The bot responds with a mean statement.')
-        for n in ["SHIT","FUCK","BITCH"]:
+        for n in ["SHIT","FUCK","BITCH"]:             # The following code was adapted into the code i learnt from https://www-geeksforgeeks-org.cdn.ampproject.org/v/s/www.geeksforgeeks.org/python-sentiment-analysis-using-vader/amp
             if n in message.content.upper():
                 accountType = on_message_swearing()
         reply = on_message_responses(sentiment, accountType)
         await message.channel.send(reply)
     else:
-        await message.channel.send('The bot responds with a nice statement.')
+        await message.channel.send('The bot responds with a nice statement.')   #This is where the code amended and adapted from https://www-geeksforgeeks-org.cdn.ampproject.org/v/s/www.geeksforgeeks.org/python-sentiment-analysis-using-vader/amp ends
         for n in ["SHIT","FUCK","BITCH"]:
             if n in message.content.upper():
                 accountType = on_message_swearing()
@@ -101,10 +100,9 @@ def Rant():
   return text
   
 
-#def sentiment_response(message):
 
 
-def on_message_Hi(intro):
+def on_message_Hi():
     MSGS=["HELLO!","Howdy", "Welcome to the Stephen B. Smith Show", "This is Good Burger home of the good burger can i take your order"]
     MSG = random.choice(MSGS)
     return MSG
@@ -125,7 +123,7 @@ def on_message_responses(sentiment, accountType):
     UncenPosWB = ["Obviously we're having a very GOOD fucking day", "See this, this shit is called chemistry", "Lets GOOOO"]
     CenPosWB = ["Obviously we're having a very GOOD day", "See this, this is called chemistry", "I love your energy"]
     
-    if sentiment == 'negative' and accountType == 'uncen':
+    if sentiment == 'negative' and accountType == 'uncen': # I used sentiment variable from the API in https://www-geeksforgeeks-org.cdn.ampproject.org/v/s/www.geeksforgeeks.org/python-sentiment-analysis-using-vader/amp throughout this functon
         return random.choice(UncenNegWB)
 
     elif sentiment == 'neutral' and accountType == 'uncen':
@@ -149,3 +147,4 @@ def on_message_swearing():
     
         
 client.run('Token')
+#This where my own code ends
